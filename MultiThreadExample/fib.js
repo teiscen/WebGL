@@ -10,3 +10,4 @@ const result = fibonacci(workerData.iterations)
 
 // send the data from the worker back up to the parent
 parentPort.postMessage(result)
+

@@ -86,10 +86,10 @@ async function solveBoard(board){
 async function rSolveBoard(board, solvedBoard, {row, col}, movingForward){
     /* ------------------------------- Debug Start ------------------------------ */
     // await waitForInput('Press any key to continue...\n');
-    await delay(10); // Delay before each iteration
-    console.clear();
-    console.log();
-    prettyPrintCoord(solvedBoard, {row, col});
+    // await delay(100); // Delay before each iteration
+    // console.clear();
+    // console.log();
+    // prettyPrintCoord(solvedBoard, {row, col});
     /* -------------------------------- Debug End ------------------------------- */
 
     //Base cases
@@ -196,8 +196,11 @@ function waitForInput(prompt) {
 //!SECTION
 
 //SECTION - part thats being executed 
-// (async() => {
-//     const myBoard = await solveBoard(ExampleBoard);
-//     verifySolution(myBoard, SolvedBoard);
-// })();
+(async() => {
+    const start = Date.now()
+    const myBoard = await solveBoard(ExampleBoard);
+    verifySolution(myBoard, SolvedBoard);
+    prettyPrint(myBoard)
+    console.log(`ALL Done in ${Date.now() - start}ms`)
+})();
 //!SECTION

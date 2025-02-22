@@ -1,0 +1,129 @@
+Iteration: 0
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     1.0, 1.0, 0.0        | Vel:     3.0, 3.0, 0.0
+Posn:    0.0, 0.0, 0.0        | Posn:    11.0, 11.0, 0.0      | Posn:    23.0, -17.0, 0.0
+
+Iteration: 1
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.9, 0.9, 0.0        | Vel:     3.0, 3.0, 0.0
+Posn:    0.0, 0.0, 0.0        | Posn:    11.9, 11.9, 0.0      | Posn:    26.0, -14.0, 0.0
+
+Iteration: 2
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.9, 0.9, 0.0        | Vel:     3.0, 3.0, 0.0
+Posn:    0.0, 0.0, 0.0        | Posn:    12.8, 12.8, 0.0      | Posn:    28.9, -10.9, 0.0
+
+Iteration: 3
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.9, 0.9, 0.0        | Vel:     3.0, 3.0, 0.0
+Posn:    0.0, 0.0, 0.0        | Posn:    13.7, 13.7, 0.0      | Posn:    31.9, -7.9, 0.0
+
+Iteration: 4
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.9, 0.9, 0.0        | Vel:     2.9, 3.0, 0.0
+Posn:    0.1, 0.0, 0.0        | Posn:    14.6, 14.6, 0.0      | Posn:    34.9, -4.9, 0.0
+
+Iteration: 5
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.9, 0.8, 0.0        | Vel:     2.9, 3.0, 0.0
+Posn:    0.1, 0.0, 0.0        | Posn:    15.4, 15.4, 0.0      | Posn:    37.8, -1.9, 0.0
+
+Iteration: 6
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.8, 0.8, 0.0        | Vel:     2.9, 3.0, 0.0
+Posn:    0.1, 0.1, 0.0        | Posn:    16.3, 16.2, 0.0      | Posn:    40.7, 1.2, 0.0
+
+Iteration: 7
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.8, 0.8, 0.0        | Vel:     2.9, 3.0, 0.0
+Posn:    0.1, 0.1, 0.0        | Posn:    17.1, 17.0, 0.0      | Posn:    43.6, 4.2, 0.0
+
+Iteration: 8
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.8, 0.8, 0.0        | Vel:     2.9, 3.0, 0.0
+Posn:    0.2, 0.1, 0.0        | Posn:    17.9, 17.9, 0.0      | Posn:    46.6, 7.3, 0.0
+
+Iteration: 9
+Galaxy
+Name:          Milk Way
+GravConst:     1
+TimeStep:      1
+
+CelestialBodies
+Name:    Sun                  | Name:    Earth                | Name:    Mars
+Mass:    10                   | Mass:    1                    | Mass:    1
+Radius:  3                    | Radius:  1                    | Radius:  1
+Vel:     0.0, 0.0, 0.0        | Vel:     0.8, 0.8, 0.0        | Vel:     2.9, 3.0, 0.0
+Posn:    0.2, 0.1, 0.0        | Posn:    18.7, 18.6, 0.0      | Posn:    49.5, 10.3, 0.0

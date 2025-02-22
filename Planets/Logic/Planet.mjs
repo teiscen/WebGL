@@ -1,14 +1,9 @@
-class Vec3{
-    constructor(x, y, z){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
+import { vec3 } from 'gl-matrix';
 
-    toString(){
-        const f = (num) => num.toFixed(1);
-        return `${f(this.x)}, ${f(this.y)}, ${f(this.z)}`;
-    }
+
+function vec3ToString(vec){
+    const f = (num) => num.toFixed(1);
+    return `${f(vec[0])}, ${f(vec[1])}, ${f(vec[2])}`;
 }
 
 // Implementation is adapted from: https://www.youtube.com/watch?v=7axImc1sxa0&t=646s
@@ -22,19 +17,34 @@ class CelestialBody {
     }
 
     updateVelocity(cBody, gravConst, timeStep){
+        
         // let sqrDst = (cBody.posn - this.posn).sqrMagnitude // Float
-        // let forceDir = (cBody.posn = this.posn).normalized // vec3
+        let diff = vec3.create();
+        vec3.sub(diff, cBody.posn, this.posn);
+        let sqrDist = vec3.squaredLength(diff);
+
+        // let forceDir = (cBody.posn - this.posn).normalized // vec3
+        let forceDir = vec3.create();
+        vec3.normalize(forceDir, diff);
+
         // let force = forceDir * gravConst * cBody.mass * this.mass / sqrDist; //vec3
+        let force = vec3.create();
+        let forceMag = gravConst * cBody.mass * this.mass / sqrDist;
+        vec3.scale(force, forceDir, forceMag);
+
         // let acceleration = force / this.mass; // vec3 this.mass cancels out but might be useful later
-        this.vel += acceleration * timeStep;
+        let accel = vec3.create();
+        vec3.scale(accel, force, 1/this.mass);
+
+        vec3.scaleAndAdd(this.vel, this.vel, accel, timeStep);
     }
 
     updatePosition(timeStep){
-        // this.posn += this.vel * timeStep;
+        vec3.scaleAndAdd(this.posn, this.posn, this.vel, timeStep);
     }
 
     toString(){
-        const padSizeStart = 9, padSizeEnd = 20; 
+        const padSizeStart  = 9, padSizeEnd = 20; 
         const nameLabel     = 'Name:'.padEnd(padSizeStart);
         const massLabel     = 'Mass:'.padEnd(padSizeStart);
         const radiusLabel   = 'Radius:'.padEnd(padSizeStart);
@@ -44,8 +54,8 @@ class CelestialBody {
         const nameValue     = this.name.padEnd(padSizeEnd);
         const massValue     = this.mass.toString().padEnd(padSizeEnd);
         const radiusValue   = this.radius.toString().padEnd(padSizeEnd);
-        const velocityValue = this.vel.toString().padEnd(padSizeEnd);
-        const positionValue = this.posn.toString().padEnd(padSizeEnd);
+        const velocityValue = vec3ToString(this.vel).padEnd(padSizeEnd);
+        const positionValue = vec3ToString(this.posn).padEnd(padSizeEnd);
 
         return `${nameLabel}${nameValue}\n${massLabel}${massValue}\n${radiusLabel}${radiusValue}\n${velocityLabel}${velocityValue}\n${positionLabel}${positionValue}`;
     }
@@ -69,4 +79,4 @@ class CelestialBody {
 // const earth = new CelestialBody("Earth", 1, 1, new Vector3(1.0, 1.0, 0.0), new Vector3(10.0, 10.0, 0.0));
 // console.log(result);
 
-export { CelestialBody, Vec3 }
+export { CelestialBody }

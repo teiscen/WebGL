@@ -11,24 +11,35 @@ const MAGENTA   = [1.0, 0.0, 1.0, 1.0];
 
 //TODO - Reorganize this in a way thats better maybe a class that has vertex, tranform and index data
 class VertexDataFactory {
-    genCircle(steps, rgbaFloat) {
+    static genCircle(steps) {
         let vertexData = [];
         // Origin is the first point
-        vertexData.push(0.0, 0.0, 0.0, ...rgbaFloat);
+        vertexData.push(0.0, 0.0, 0.0, ...WHITE);
 
         const radius = 1.0;
         //Rotate clockwise to fill in the rest
         for(let i = 0; i < steps; i++){
             let newX = radius * Math.sin(2 * Math.PI * i / steps);
             let newY = -radius * Math.cos(2 * Math.PI * i / steps);
-            vertexData.push(newX, newY, 0.0, ... rgbaFloat);
+            vertexData.push(newX, newY, 0.0, ... WHITE);
         }
         return new Float32Array(vertexData);
+    }
+    
+    // Max Players are 6 for now
+    static genPlatform(playerCount){
+        let defaultColor = [
+            RED, GREEN, BLUE, 
+            YELLOW, CYAN, MAGENTA
+        ];
+        for(let i = 0 ; i < playerCount; i++){
+            // Make the colors equals to defaultColor in order
+        }        
     }
 }
 
 class IndexDataFactory{
-    genCircle(steps) {
+    static genCircle(steps) {
         let indexData = []
         for(let i = 0; i < steps - 1; i++){
             indexData.push(0, i + 1, i + 2);
@@ -40,8 +51,14 @@ class IndexDataFactory{
 }
 
 //NOTE - Only for 2d operations
+// Also might not be useful 
 class TransformDataFactory{
-    genScaleMatrix(xScale, yScale){
+    static genPlanets(){
+        
+    }
+
+
+    static genScaleMatrix(xScale, yScale){
         return new Float32Array([
             sx, 0,  0,  0,
             0,  sy, 0,  0,
@@ -50,7 +67,7 @@ class TransformDataFactory{
         ])
     }
 
-    genRotationMatrix(angle){
+    static genRotationMatrix(angle){
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
         return new Float32Array([
@@ -60,7 +77,7 @@ class TransformDataFactory{
         ])
     }
 
-    genTranslationMatrix(xTrans, yTrans){
+    static genTranslationMatrix(xTrans, yTrans){
         return new Float32Array([
             1, 0, xTrans,
             0, 1, yTrans,
@@ -69,10 +86,4 @@ class TransformDataFactory{
     }
 }
 
-
-// This is the actual bufferData thats is going to be sent to and from
-class BufferData{
-
-}
-
-export { BufferData }
+export { VertexDataFactory, IndexDataFactory, TransformDataFactory }

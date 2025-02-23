@@ -1,4 +1,4 @@
-import { vec3 } from 'gl-matrix';
+import { vec3 } from '../../node_modules/gl-matrix/esm/index.js';
 
 
 function vec3ToString(vec){
@@ -8,16 +8,16 @@ function vec3ToString(vec){
 
 // Implementation is adapted from: https://www.youtube.com/watch?v=7axImc1sxa0&t=646s
 class CelestialBody {
-    constructor(name, mass, radius, initialVel, initialPosn){
+    constructor(name, initialVel, mass, color, radius, initialPosn){
         this.name = name;
-        this.mass = mass;
-        this.radius = radius;
         this.vel = initialVel;
+        this.mass = mass;
+        this.color = color;
+        this.radius = radius;
         this.posn = initialPosn;
     }
 
-    updateVelocity(cBody, gravConst, timeStep){
-        
+    updateVelocity(cBody, gravConst, timeStep){  
         // let sqrDst = (cBody.posn - this.posn).sqrMagnitude // Float
         let diff = vec3.create();
         vec3.sub(diff, cBody.posn, this.posn);

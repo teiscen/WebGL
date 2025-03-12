@@ -1,6 +1,6 @@
-import { VertexDataFactory, IndexDataFactory, TransformDataFactory } from "./bufferCode.js";
-import { createVAO } from "./createBuffers.js";
-import { Galaxy } from "../../Logic/Galaxy.mjs";
+import { VertexDataFactory, IndexDataFactory, TranslationMatrixFactory } from "../../Planets/WebGL/_Tools/factory.js";
+import { createVAO } from "../../Planets/WebGL/_Tools/buffer.js";
+import { Galaxy } from "../../Planets/Logic/Galaxy.mjs";
 
 //Responsible for setting up the buffers that communicate with the webgl
 //NOTE - Need to rework how this works as the drawingo and whatnot is flawed
@@ -21,15 +21,13 @@ class Buffer{
             insCount:   data.tData.length/8
         };
     }
-
-
     /**
      * Returns BufferObj{vData, iData, tData} all in Float32Array
      * vData: Circle Vertex Data, [x, y, z, r, g, b, a]
      * iData: Indices to create a circle using gl_Triangle //NOTE - Not actually sure about this
      * tData: Radius, Color, Posn, [R, x, y, z, r, g, b, a]
-    */
-    createGalaxyData(){
+     */
+     createGalaxyData(){
         let transforms = [];
         let cBodies = this.galaxy.getCelestialBodies();
         cBodies.forEach(cBody => {
@@ -44,10 +42,16 @@ class Buffer{
 
         return { vData: vData, iData: iData, tData: tData };
     }   
+
     // This calls createVAO in createBuffers.js
     // It takes in the data in their proper uint or float form
     // it also takes a helper function that formates the buffes correctly
     // it then passed back the VAO
+    /**
+     * Takes in:
+     * vertex index and transform data
+     * Functions that sets up the bindings
+     */
     createGalaxyVAO(gl){
         return createVAO(gl, this.createGalaxyData(), this.galaxyVaoHelper);
     }

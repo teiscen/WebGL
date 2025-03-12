@@ -9,7 +9,6 @@ const YELLOW    = [1.0, 1.0, 0.0, 1.0];
 const CYAN      = [0.0, 1.0, 1.0, 1.0];
 const MAGENTA   = [1.0, 0.0, 1.0, 1.0];
 
-//TODO - Reorganize this in a way thats better maybe a class that has vertex, tranform and index data
 class VertexDataFactory {
     static genCircle(steps) {
         let vertexData = [];
@@ -50,14 +49,7 @@ class IndexDataFactory{
     }
 }
 
-//NOTE - Only for 2d operations
-// Also might not be useful 
-class TransformDataFactory{
-    static genPlanets(){
-        
-    }
-
-
+class TranslationMatrixFactory{
     static genScaleMatrix(xScale, yScale){
         return new Float32Array([
             sx, 0,  0,  0,
@@ -86,4 +78,5 @@ class TransformDataFactory{
     }
 }
 
-export { VertexDataFactory, IndexDataFactory, TransformDataFactory }
+
+export { VertexDataFactory, IndexDataFactory, TranslationMatrixFactory }

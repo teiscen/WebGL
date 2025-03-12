@@ -174,11 +174,12 @@ function verifySolution(board, solvedBoard){
             :   prettyPrint(difference);
 }
 
-const readline = require('readline');
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+const readline = require('readline');
 
 function waitForInput(prompt) {
     const rl = readline.createInterface({

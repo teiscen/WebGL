@@ -175,7 +175,7 @@ class BufferData{
         ];
 
         defaultValues.forEach((value) => {
-            bufferDataArray.push(this.getBufferData(value))
+            bufferDataArray.push(this.getBufferData(value));
         });
 
         return bufferDataArray;

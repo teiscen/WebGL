@@ -1,4 +1,5 @@
-import { vec3 } from '../../node_modules/gl-matrix/esm/index.js';
+// import { vec3 } from 'gl-matrix'
+import { vec3 } from "../../node_modules/gl-matrix/esm/index.js";
 
 
 function vec3ToString(vec){
@@ -18,6 +19,10 @@ class CelestialBody {
     }
 
     updateVelocity(cBody, gravConst, timeStep){  
+        if(this.name === "Sun"){
+            return;
+        }
+        
         // let sqrDst = (cBody.posn - this.posn).sqrMagnitude // Float
         let diff = vec3.create();
         vec3.sub(diff, cBody.posn, this.posn);

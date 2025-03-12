@@ -1,6 +1,6 @@
-import { CelestialBody } from "./Planet.mjs";
+import { CelestialBody } from "./Planet.js";
 // import * as glMatrix from "./common.js";
-import { vec3 } from '../../node_modules/gl-matrix/esm/index.js';
+// import { vec3 } from '../../node_modules/gl-matrix/esm/index.js';
 
 // Needs a way to communicate the bounds
 class Galaxy{
@@ -21,7 +21,7 @@ class Galaxy{
     updateVelocities(){
         this.celestialBodies.forEach((cBody1) => {
             this.celestialBodies.forEach((cBody2) => {
-                if(cBody1 != cBody2){
+                if(cBody1 !== cBody2){
                     cBody1.updateVelocity(cBody2, this.gravConst, this.timeStep);
                 }     
             })
@@ -37,6 +37,17 @@ class Galaxy{
     update(){
         this.updateVelocities();
         this.updatePositions();
+    }
+
+    // Posn and Vel
+    getArrowReqs(){
+        const posnAndVel = [];
+
+        this.celestialBodies.forEach((cBody) => {
+            posnAndVel.push(...cBody.posn, ...cBody.vel);
+        });
+
+        return posnAndVel;
     }
 
     //Not viable to print past 4 celestial bodies

@@ -1,3 +1,6 @@
+/*
+ * Used by the "OBJECTS" _Buffer files to create the buffers
+ */
 function createVertexBuffer(gl, vertexData) {
     const vertexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -19,9 +22,14 @@ function createTransformBuffer(gl, transformData) {
     return transformBuffer;
 }
 
-// check buffers.js to see it used.
-function createVAO(gl, data, helperFn){
-    return helperFn(
+/**
+ * @param {glContext} gl
+ * @param {{vData: Float32Array, iData: Uint32Array, tData: Float32Array}} data 
+ * @param {*} Function takes in gl, with buffers and creates the VAO object
+ * @returns VAO object
+ */
+function createVao(gl, data, vaoFn){
+    return vaoFn(
         gl,
         createVertexBuffer(gl, data.vData),
         createIndexBuffer(gl, data.iData),
@@ -29,4 +37,4 @@ function createVAO(gl, data, helperFn){
     )
 }
 
-export { createVAO }
+export { createVao }

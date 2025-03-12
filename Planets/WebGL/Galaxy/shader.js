@@ -1,4 +1,4 @@
-import { initShaderProgram } from "./shader.js"
+import { initShaderProgram } from "../_Tools/shader.js"
 
 const vsSource = `#version 300 es
     // #pragma vscode_glsllint_stage: vert
@@ -30,7 +30,7 @@ const vsSource = `#version 300 es
         );
 
         // mat4 rotationMatrix = mat4(
-        //     cos(tRotation), -sin(tRotation), 0.0, 0.0,
+        //     cos(tRotation), -sin(tRotation), a0.0, 0.0,
         //     -sin(tRotation),-cos(tRotation), 0.0, 0.0,
         //     0.0,            0.0,             1.0, 0.0,
         //     0.0,            0.0,             0.0, 1.0
@@ -52,7 +52,6 @@ const vsSource = `#version 300 es
     }
 `;
 
-
 const fsSource = `#version 300 es
     // #pragma vscode_glsllint_stage: frag
     precision highp float;
@@ -65,25 +64,27 @@ const fsSource = `#version 300 es
     }
 `;
 
-function shaderProgram(gl){
-    const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
-
-    return {
-        program: shaderProgram,
-        attribLocations: {
-            vPosition:          gl.getAttribLocation(shaderProgram, "vPosition"),
-            vColor:             gl.getAttribLocation(shaderProgram, "vColor"),
-            tOffset:            gl.getAttribLocation(shaderProgram, "tScale"),
-            tRotation:          gl.getAttribLocation(shaderProgram, "tPosition"),
-            tColor:             gl.getAttribLocation(shaderProgram, "tColor"),
-        },
-        uniformLocations: {
-            // uScale:             gl.getUniformLocation(shaderProgram, "uScale"),
-            uModelViewMatrix:   gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
-            uProjectionMatrix:  gl.getUniformLocation(shaderProgram, "uProjectionMatrix"),
+class Shader {
+    static shaderProgram(gl){
+        const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
+    
+        return {
+            program: shaderProgram,
+            attribLocations: {
+                vPosition:          gl.getAttribLocation(shaderProgram, "vPosition"),
+                vColor:             gl.getAttribLocation(shaderProgram, "vColor"),
+                tOffset:            gl.getAttribLocation(shaderProgram, "tScale"),
+                tRotation:          gl.getAttribLocation(shaderProgram, "tPosition"),
+                tColor:             gl.getAttribLocation(shaderProgram, "tColor"),
+            },
+            uniformLocations: {
+                // uScale:             gl.getUniformLocation(shaderProgram, "uScale"),
+                uModelViewMatrix:   gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
+                uProjectionMatrix:  gl.getUniformLocation(shaderProgram, "uProjectionMatrix"),
+            }
         }
     }
 }
 
-export {shaderProgram}
+export { Shader }
 

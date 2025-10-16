@@ -31,13 +31,11 @@ class Galaxy {
         let idxCount = this.data.iData.length;
         let insCount = this.data.tData.length / 8; // each instnce requires 7 values from transforms
 
-
         this.gl.bindVertexArray(this.vao);
         // gl.drawElementsInstanced(gl.TRIANGLES, idxCount, gl.UNSIGNED_INT, 0, insCount);
         this.gl.drawElementsInstanced(this.gl.TRIANGLES, idxCount, this.gl.UNSIGNED_INT, 0, insCount);
         this.gl.bindVertexArray(null);
     }
-
 
     // Need to come up with a better name
     getVao() {
